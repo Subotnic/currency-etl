@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:latest
+    container_name: clickhouse
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    environment:
+    - CLICKHOUSE_USER=default
+    - CLICKHOUSE_PASSWORD=admin
+    volumes:
+      - clickhouse_data:/var/lib/clickhouse
+      - ../sql/create_table.sql:/docker-entrypoint-initdb.d/create_table.sql
+
+  airflow:
+    image: apache/airflow:2.8.1
+    container_name: airflow
+    depends_on:
+      - clickhouse
+    ports:
+      - "8080:8080"
+    volumes:
+      - ../dags:/opt/airflow/dags
+      - ../src:/opt/airflow/src
+      - airflow_data:/opt/airflow
+    environment:
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - PYTHONPATH=/opt/airflow
+      - _PIP_ADDITIONAL_REQUIREMENTS=clickhouse-connect==0.6.8 pandas requests
+    command: standalone
+
+volumes:
+  clickhouse_data:
+  airflow_data:
