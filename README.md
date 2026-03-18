@@ -56,7 +56,7 @@ API → Airflow → ClickHouse
 
 ### 1. Клонировать репозиторий
 
-git clone <your_repo_url>
+git clone https://github.com/Subotnic/currency-etl
 cd currency_etl
 
 ### 2. Запустить контейнеры
