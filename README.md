@@ -37,20 +37,21 @@ API → Airflow → ClickHouse
 
 ## Структура проекта
 
+```
 .
 ├── dags/
-│   │── integration_currency.py      # DAG Airflow
-│   └── maintenance_currency.py      # DAG Airflow
+│   ├── integration_currency.py   # DAG Airflow
+│   └── maintenance_currency.py   # DAG Airflow
 ├── src/
-│   ├── extract.py                   # Получение данных
-│   ├── transform.py                 # Обработка данных
-│   └── load.py                      # Загрузка в ClickHouse
+│   ├── extract.py                # Получение данных
+│   ├── transform.py              # Обработка данных
+│   └── load.py                   # Загрузка в ClickHouse
 ├── sql/
-│   └── create_table.sql             # Создание таблицы
+│   └── create_table.sql          # Создание таблицы
 ├── docker/
-│   └── docker-compose.yml           # Контейнеры
+│   └── docker-compose.yml        # Контейнеры
+```
 
----
 
 ## Запуск проекта
 
