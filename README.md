@@ -52,7 +52,6 @@ API → Airflow → ClickHouse
 │   └── docker-compose.yml        # Контейнеры
 ```
 
-
 ## Запуск проекта
 
 ### 1. Клонировать репозиторий
@@ -105,6 +104,7 @@ http://localhost:8080
 
 ## Структура таблицы
 
+```
 CREATE TABLE currency
 (
     id UUID,
@@ -116,7 +116,7 @@ CREATE TABLE currency
 )
 ENGINE = MergeTree()
 ORDER BY date;
-
+```
 ---
 
 ## Ограничения текущей реализации
@@ -148,4 +148,4 @@ ORDER BY date;
 
 ## Автор
 
-Макс
+Максим Лазаров
